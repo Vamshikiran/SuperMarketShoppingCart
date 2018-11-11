@@ -2,7 +2,7 @@ package com.kata.shoppingcart;
 
 /**
  * @author vamshikirangullapelly
- *         
+ *
  */
 
 public final class IndividualItemPricingRule implements PricingRule {
