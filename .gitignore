@@ -1,0 +1,5 @@
+
+*.xml
+target/classes/com/kata/shoppingcart/IndividualItemPricingRule$1.class
+*.class
+*.xml
