@@ -11,11 +11,10 @@ import static com.google.common.collect.Maps.newHashMap;
 
 /**
  * @author vamshikirangullapelly
- * This class is used to scan the item apply the pricing rules and calculate the total price .
+ *         This class is used to scan the item apply the pricing rules and calculate the total price.
  */
 
 public class KataSupermarketCheckout {
-
 
 
     public Transaction startTransaction(final Set<PricingRule> pricingRules) {
@@ -27,8 +26,8 @@ public class KataSupermarketCheckout {
         final Map<Item, Long> shoppingBasket = newHashMap(transaction.getShoppingBasket());
         int totalPrice = 0;
 
-        for(PricingRule rule : orderedPricingRules) {
-            if(shoppingBasket.containsKey(rule.getItem())) {
+        for (PricingRule rule : orderedPricingRules) {
+            if (shoppingBasket.containsKey(rule.getItem())) {
                 long amount = shoppingBasket.get(rule.getItem());
                 Unit unit = rule.apply(amount);
                 totalPrice += unit.getPrice();
@@ -42,7 +41,7 @@ public class KataSupermarketCheckout {
     private List<PricingRule> orderPricingRules(Set<PricingRule> pricingRules) {
         return Ordering.natural().reverse().onResultOf(new Function<PricingRule, Integer>() {
             public Integer apply(PricingRule rule) {
-                if(!rule.getClass().isAnnotationPresent(Order.class)) {
+                if (!rule.getClass().isAnnotationPresent(Order.class)) {
                     return 0;
                 } else {
                     Order order = rule.getClass().getAnnotation(Order.class);
@@ -51,5 +50,6 @@ public class KataSupermarketCheckout {
             }
         }).sortedCopy(pricingRules);
     }
+
 
 }
