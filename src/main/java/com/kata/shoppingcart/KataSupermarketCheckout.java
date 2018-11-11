@@ -11,7 +11,7 @@ import static com.google.common.collect.Maps.newHashMap;
 
 /**
  * @author vamshikirangullapelly
- * This class is used to scan the item apply the pricing rules and calculate the total price.
+ * This class is used to scan the item apply the pricing rules and calculate the total price .
  */
 
 public class KataSupermarketCheckout {
